@@ -23,7 +23,7 @@ public class LoginController {
     @GetMapping("/login")
     public String loginForm() {
 
-        return "login/loginForm";
+        return "member/loginForm";
     }
 
     @PostMapping("/login")

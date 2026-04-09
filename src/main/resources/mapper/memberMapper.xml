@@ -8,4 +8,9 @@
         FROM member
         WHERE login_id = #{loginId}
     </select>
+
+    <insert id="insert" parameterType="MemberDTO">
+        INSERT INTO member(login_id, password, name, tel, email)
+        VALUES(#{loginId}, #{password}, #{name}, #{tel}, #{email})
+    </insert>
 </mapper>

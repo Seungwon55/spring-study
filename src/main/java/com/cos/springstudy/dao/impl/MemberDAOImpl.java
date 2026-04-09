@@ -12,8 +12,15 @@ public class MemberDAOImpl implements MemberDAO {
 
     private final MemberMapper mapper;
 
+    // 아이디를 통한 회원 조회
     @Override
     public MemberDTO selectByLoginId(String loginId) {
         return mapper.selectByLoginId(loginId);
+    }
+
+    // 회원가입
+    @Override
+    public int insert(MemberDTO memberDTO) {
+        return mapper.insert(memberDTO);
     }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/fragment/header.css">
+    <link rel="stylesheet" href="/css/fragment/footer.css">
+    <link rel="stylesheet" href="/css/member/registerComplete.css">
+</head>
+<body>
+
+<!-- 헤더 -->
+<div th:replace="~{fragment/header :: header}"></div>
+
+<div class="container">
+
+    <!-- 타이틀 -->
+    <h1 class="title">회원 가입 완료</h1>
+
+    <!-- 단계 표시 -->
+    <div class="step">
+        <span>1. 정보입력</span>
+        <span class="arrow">></span>
+        <span class="active">2. 가입완료</span>
+    </div>
+
+    <!-- 카드 -->
+    <div class="card">
+
+        <div class="icon"></div>
+
+        <h2>회원가입이 완료 되었습니다.</h2>
+
+        <hr>
+
+        <div class="info">
+            <div><span>아이디</span><span th:text="${member.loginId}">root</span></div>
+            <div><span>이름</span><span th:text="${member.name}">테스트</span></div>
+            <div><span>이메일</span><span th:text="${member.email}">root@naver.com</span></div>
+        </div>
+
+    </div>
+
+    <!-- 버튼 -->
+    <a href="/login" class="main-btn">로그인 페이지 이동</a>
+
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragment/footer :: footer}"></div>
+
+</body>
+</html>

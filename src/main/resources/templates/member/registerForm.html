@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/fragment/header.css">
+    <link rel="stylesheet" href="/css/fragment/footer.css">
+    <link rel="stylesheet" href="/css/member/registerForm.css">
+</head>
+<body>
+
+<!-- 헤더 -->
+<div th:replace="~{fragment/header :: header}"></div>
+
+<div class="container">
+
+    <!-- 타이틀 -->
+    <h1 class="title">회원 가입</h1>
+
+    <!-- 단계 -->
+    <div class="step">
+        <span class="active">1. 정보입력</span>
+        <span class="arrow">></span>
+        <span>2. 가입완료</span>
+    </div>
+
+    <!-- 폼 -->
+    <form action="/register/add" method="post" class="form-box">
+
+        <!-- 아이디 -->
+        <div class="form-row">
+            <label for="loginId" class="label required">아이디</label>
+            <div class="input-area">
+                <input type="text" id="loginId" name="loginId" required>
+                <p class="hint">(영문소문자/숫자, 4~16자)</p>
+            </div>
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="form-row">
+            <label for="password" class="label required">비밀번호</label>
+            <div class="input-area">
+                <input type="password" id="password" name="password" required>
+                <p class="hint">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</p>
+            </div>
+        </div>
+
+        <!-- 비밀번호 확인 -->
+        <div class="form-row">
+            <label for="passwordChk" class="label required">비밀번호 확인</label>
+            <div class="input-area">
+                <input type="password" id="passwordChk" name="passwordChk" required>
+            </div>
+        </div>
+
+        <!-- 이름 -->
+        <div class="form-row">
+            <label for="name" class="label required">이름</label>
+            <div class="input-area">
+                <input type="text" id="name" name="name" required>
+            </div>
+        </div>
+
+        <!-- 휴대전화 -->
+        <div class="form-row">
+            <label for="tel" class="label required">휴대전화</label>
+            <div class="input-area">
+                <input type="tel" id="tel" name="tel" required>
+            </div>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="form-row">
+            <label for="email" class="label required">이메일</label>
+            <div class="input-area">
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+
+        <!-- 버튼 -->
+        <div class="btn-group">
+            <button type="submit" class="btn submit">가입하기</button>
+            <button type="reset" class="btn cancel">취소</button>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragment/footer :: footer}"></div>
+
+</body>
+</html>
