@@ -16,11 +16,11 @@
         <div class="top-menu">
             <ul>
                 <!-- 로그인이 안 되어 있을 때 -->
-                <li><a href="#">회원가입</a></li>
-                <li><a href="/login">로그인</a></li>
+                <li th:if="${session.member == null}"><a href="/register/add">회원가입</a></li>
+                <li th:if="${session.member == null}"><a href="/login">로그인</a></li>
                 <!-- 로그인이 되어 있을 때 -->
-                <li><span>홍길동 님</span></li>
-                <li>
+                <li th:if="${session.member != null}"><span th:text="|${session.member.loginId}님|"></span></li>
+                <li th:if="${session.member != null}">
                     <form action="/logout" method="post">
                         <button type="submit">로그아웃</button>
                     </form>
@@ -38,6 +38,7 @@
 
     </header>
 </div>
+
 
 </body>
 </html>

@@ -9,9 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -21,13 +20,18 @@ public class LoginController {
     private final MemberDAO memberDAO;
 
     @GetMapping("/login")
-    public String loginForm() {
+    public String loginForm(@CookieValue(name = "loginId", required = false) String loginId,
+                            @RequestParam(name="uri", required = false) String uri,
+                            Model model) {
+
+        model.addAttribute("loginId", loginId);  // 전에 로그인 기억한다면 loginId 활성화
+        model.addAttribute("uri", uri);          // 로그인 성공 시 전에 머물던 페이지로 이동하기 위한 uri값
 
         return "member/loginForm";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute LoginDTO loginDTO,
+    public String login(@ModelAttribute LoginDTO loginDTO, @RequestParam(name = "uri", required = false) String uri,
                         HttpServletRequest request, HttpServletResponse response,
                         RedirectAttributes redirect) {
 
@@ -57,7 +61,7 @@ public class LoginController {
             cookie.setMaxAge(0);  // 기억 안할 시 쿠키 삭제
         response.addCookie(cookie);
 
-        return "redirect:/";
+        return "redirect:" + (uri == null ? "" : uri);
     }
 
     @PostMapping("/logout")
