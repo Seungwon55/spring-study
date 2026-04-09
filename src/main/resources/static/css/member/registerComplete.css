@@ -1,0 +1,81 @@
+.container {
+    width: 600px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+/* 타이틀 */
+.title {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* 단계 표시 */
+.step {
+    color: #999;
+    margin-bottom: 40px;
+}
+
+.step .arrow {
+    margin: 0 10px;
+}
+
+.step .active {
+    color: black;
+    font-weight: bold;
+}
+
+/* 카드 */
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+/* 아이콘 */
+.icon {
+    width: 80px;
+    height: 80px;
+    background-color: #cfd6df;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+/* 텍스트 */
+.card h2 {
+    margin-bottom: 10px;
+}
+
+/* 구분선 */
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+/* 회원 정보 */
+.info {
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.info div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+/* 버튼 */
+.main-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #c8a27a;
+    background: white;
+    color: #c8a27a;
+    font-size: 16px;
+    text-decoration-line: none;
+    cursor: pointer;
+}

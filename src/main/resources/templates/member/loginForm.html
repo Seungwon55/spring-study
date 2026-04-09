@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/fragment/header.css">
+    <link rel="stylesheet" href="/css/fragment/footer.css">
+    <link rel="stylesheet" href="/css/member/loginForm.css">
+</head>
+<body>
+
+<!-- 헤더 -->
+<div th:replace="~{fragment/header :: header}"></div>
+
+<div class="login-container">
+
+    <!-- 타이틀 -->
+    <h1 class="login-title">로그인</h1>
+
+    <!-- 로그인 폼 -->
+    <form action="/login" method="post" class="login-form">
+
+        <input type="text" name="loginId" th:value="${loginId}" placeholder="아이디" class="input-box">
+        <input type="password" name="password" placeholder="비밀번호" class="input-box">
+
+        <div th:text="${param.message}" class="error-msg">에러 메시지</div>
+
+        <div class="login-options">
+            <label>
+                <input type="checkbox" name="rememberId" th:checked="${loginId != null}">
+                로그인 상태 유지
+            </label>
+        </div>
+
+        <input type="hidden" name="uri" th:value="${uri}">   <!-- 전에 머무르던 페이지로 이동하기 위한 uri 값 -->
+
+        <button type="submit" class="login-btn">로그인</button>
+
+    </form>
+
+    <!-- 찾기 -->
+    <div class="login-links">
+        <a href="#">아이디 찾기</a>
+        <span>|</span>
+        <a href="#">비밀번호 찾기</a>
+    </div>
+
+    <!-- 회원가입 -->
+    <div class="signup-box">
+        <h2>아직 회원이 아니신가요?</h2>
+        <p>지금 회원가입을 하시면<br>다양하고 특별한 혜택이 준비되어 있습니다.</p>
+        <a href="/register/add" class="signup-btn">회원가입</a>
+    </div>
+
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragment/footer :: footer}"></div>
+
+</body>
+</html>
