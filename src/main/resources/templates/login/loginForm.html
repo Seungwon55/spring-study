@@ -22,19 +22,19 @@
     <!-- 로그인 폼 -->
     <form action="/login" method="post" class="login-form">
 
-        <input type="text" name="loginId" placeholder="아이디" class="input-box">
+        <input type="text" name="loginId" th:value="${loginId}" placeholder="아이디" class="input-box">
         <input type="password" name="password" placeholder="비밀번호" class="input-box">
 
-        <div class="error-msg">에러 메시지</div>
+        <div th:text="${param.message}" class="error-msg">에러 메시지</div>
 
         <div class="login-options">
             <label>
-                <input type="checkbox" name="rememberId">
+                <input type="checkbox" name="rememberId" th:checked="${loginId != null}">
                 로그인 상태 유지
             </label>
         </div>
 
-        <input type="hidden" name="uri">   <!-- 전에 머무르던 페이지로 이동하기 위한 uri 값 -->
+        <input type="hidden" name="uri" th:value="${uri}">   <!-- 전에 머무르던 페이지로 이동하기 위한 uri 값 -->
 
         <button type="submit" class="login-btn">로그인</button>
 

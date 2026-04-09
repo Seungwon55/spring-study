@@ -12,4 +12,13 @@ public class LoginDTO {
     private String loginId;
     private String password;
     private Boolean rememberId;
+
+    public boolean getRememberId() {
+        return Boolean.TRUE.equals(this.rememberId);
+    }
+
+    // 아이디,비밀번호 입력 확인
+    public boolean inputCheck() {
+        return loginId.isBlank() || password.isBlank();
+    }
 }
