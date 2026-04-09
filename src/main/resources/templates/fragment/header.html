@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>헤더</title>
+</head>
+<body>
+
+<div th:fragment="header">
+    <header class="header">
+
+        <!-- 상단 메뉴 -->
+        <div class="top-menu">
+            <ul>
+                <!-- 로그인이 안 되어 있을 때 -->
+                <li><a href="#">회원가입</a></li>
+                <li><a href="/login">로그인</a></li>
+                <!-- 로그인이 되어 있을 때 -->
+                <li><span>홍길동 님</span></li>
+                <li>
+                    <form action="/logout" method="post">
+                        <button type="submit">로그아웃</button>
+                    </form>
+                </li>
+                <li><a href="/board/list">게시판</a></li>
+            </ul>
+        </div>
+
+        <!-- 로고 -->
+        <div class="logo">
+            <h1>
+                <span class="blue">Sample</span><span class="gray">mall</span>
+            </h1>
+        </div>
+
+    </header>
+</div>
+
+</body>
+</html>

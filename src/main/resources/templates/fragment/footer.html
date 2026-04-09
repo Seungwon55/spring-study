@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>푸터</title>
+</head>
+<body>
+
+<div th:fragment="footer">
+    <footer class="footer">
+
+        <!-- 상단 링크 -->
+        <div class="footer-top">
+            <ul>
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용안내</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 푸터 -->
+        <div class="footer-main">
+
+            <!-- 좌측: 쇼핑몰 정보 -->
+            <div class="footer-col">
+                <h2 class="logo">Practice Board</h2>
+
+                <p class="title">쇼핑몰 기본정보</p>
+                <p>
+                    상호명 웹페이지 쇼핑몰 대표자명 홍길동<br>
+                    사업장 주소 대표 전화 010-1234-5678<br>
+                </p>
+            </div>
+
+            <!-- 가운데: 고객센터 -->
+            <div class="footer-col">
+                <p class="title">고객센터 정보</p>
+
+                <p><strong>상담/주문전화</strong> 010-1234-5678</p>
+                <p><strong>상담/주문 이메일</strong></p>
+                <p>asdf1234@naver.com</p>
+            </div>
+
+            <!-- 결제 정보 -->
+            <div class="footer-col">
+                <p class="title">결제 정보</p>
+
+                <p><strong>무통장 계좌정보</strong></p>
+                <p>은행 0000-000-00000 예금주</p>
+            </div>
+
+            <!-- SNS -->
+            <div class="footer-col">
+                <p class="title">SNS</p>
+
+                <ul class="sns">
+                    <li><a href="#">instagram</a></li>
+                    <li><a href="#">youtube</a></li>
+                    <li><a href="#">facebook</a></li>
+                    <li><a href="#">kakao</a></li>
+                    <li><a href="#">twitter</a></li>
+                    <li><a href="#">blog</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 하단 카피라이트 -->
+        <div class="footer-bottom">
+            <p>
+                Copyright © 웹페이지 쇼핑몰. All Rights Reserved.
+                Creating by SW
+            </p>
+        </div>
+
+    </footer>
+</div>
+
+</body>
+</html>
