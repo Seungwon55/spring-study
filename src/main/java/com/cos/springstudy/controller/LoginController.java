@@ -55,7 +55,6 @@ public class LoginController {
 
         // 아이디 기억 시 쿠키 저장
         Cookie cookie = new Cookie("loginId", memberDTO.getLoginId());
-        System.out.println("loginDTO = " + loginDTO);
         if (loginDTO.getRememberId())
             cookie.setMaxAge(60 * 5);  // 5분간 아이디 저장
         else

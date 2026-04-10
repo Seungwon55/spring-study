@@ -8,4 +8,7 @@ public interface BoardDAO {
 
     // 게시글 리스트 조회
     List<BoardDTO> selectList();
+
+    // 게시글 번호를 통한 게시글 조회
+    BoardDTO selectByBno(Integer bno);
 }

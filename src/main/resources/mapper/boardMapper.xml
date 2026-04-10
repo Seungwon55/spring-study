@@ -4,10 +4,15 @@
 
 <mapper namespace="com.cos.springstudy.mapper.BoardMapper">
     <select id="selectList" resultType="BoardDTO">
-        <include refid="selectList" />
+        <include refid="select" />
     </select>
 
-    <sql id="selectList">
+    <select id="selectByBno" parameterType="Integer" resultType="BoardDTO">
+        <include refid="select" />
+        WHERE bno = #{bno}
+    </select>
+
+    <sql id="select">
         SELECT *
         FROM board
     </sql>

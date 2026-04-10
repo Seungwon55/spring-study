@@ -19,4 +19,10 @@ public class BoardDAOImpl implements BoardDAO {
     public List<BoardDTO> selectList() {
         return mapper.selectList();
     }
+
+    // 게시글 번호를 통한 게시글 조회
+    @Override
+    public BoardDTO selectByBno(Integer bno) {
+        return mapper.selectByBno(bno);
+    }
 }
