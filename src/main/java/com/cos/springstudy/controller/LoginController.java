@@ -3,6 +3,7 @@ package com.cos.springstudy.controller;
 import com.cos.springstudy.dao.MemberDAO;
 import com.cos.springstudy.dto.LoginDTO;
 import com.cos.springstudy.dto.MemberDTO;
+import com.cos.springstudy.error.exception.LoginDTOBlankException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -36,7 +37,7 @@ public class LoginController {
                         RedirectAttributes redirect) {
 
         if (loginDTO.inputCheck())
-            throw new RuntimeException("아이디,비밀번호를 입력하지 않았습니다.");
+            throw new LoginDTOBlankException();
 
         // 아이디를 통한 회원 조회
         MemberDTO memberDTO = memberDAO.selectByLoginId(loginDTO.getLoginId());
