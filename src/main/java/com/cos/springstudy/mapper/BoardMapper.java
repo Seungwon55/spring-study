@@ -13,4 +13,7 @@ public interface BoardMapper {
 
     // 게시글 번호를 통한 게시글 조회
     BoardDTO selectByBno(Integer bno);
+
+    // 조회수 증가
+    int increaseViewCnt(Integer bno);
 }

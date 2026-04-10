@@ -3,14 +3,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cos.springstudy.mapper.BoardMapper">
+    <!-- 게시글 리스트 조회 -->
     <select id="selectList" resultType="BoardDTO">
         <include refid="select" />
     </select>
 
+    <!-- 게시글 번호를 통한 게시글 조회 -->
     <select id="selectByBno" parameterType="Integer" resultType="BoardDTO">
         <include refid="select" />
         WHERE bno = #{bno}
     </select>
+
+    <!-- 조회수 증가 -->
+    <update id="increaseViewCnt" parameterType="Integer">
+        UPDATE board
+        SET view_cnt = view_cnt + 1
+        WHERE bno = #{bno}
+    </update>
 
     <sql id="select">
         SELECT *

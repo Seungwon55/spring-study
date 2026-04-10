@@ -34,6 +34,9 @@ public class BoardController {
     @LoginCheck
     public String boardDetail(@PathVariable int bno, Model model) {
 
+        // 해당 게시글 조회수 증가
+        boardDAO.increaseViewCnt(bno);
+
         BoardDTO boardDTO = boardDAO.selectByBno(bno);
         model.addAttribute("board", boardDTO);
 

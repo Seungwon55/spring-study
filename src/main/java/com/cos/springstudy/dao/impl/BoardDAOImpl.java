@@ -25,4 +25,10 @@ public class BoardDAOImpl implements BoardDAO {
     public BoardDTO selectByBno(Integer bno) {
         return mapper.selectByBno(bno);
     }
+
+    // 조회수 증가
+    @Override
+    public int increaseViewCnt(Integer bno) {
+        return mapper.increaseViewCnt(bno);
+    }
 }
