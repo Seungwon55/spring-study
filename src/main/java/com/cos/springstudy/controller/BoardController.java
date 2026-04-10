@@ -3,12 +3,11 @@ package com.cos.springstudy.controller;
 import com.cos.springstudy.aop.LoginCheck;
 import com.cos.springstudy.dao.BoardDAO;
 import com.cos.springstudy.dto.BoardDTO;
+import com.cos.springstudy.error.exception.BoardDTOBlankException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,5 +40,25 @@ public class BoardController {
         model.addAttribute("board", boardDTO);
 
         return "board/boardDetail";
+    }
+
+    // 게시물 작성 폼으로 이동
+    @GetMapping("/write")
+    @LoginCheck
+    public String boardWriteForm() {
+
+        return "board/boardWriteForm";
+    }
+
+    // 게시물 작성
+    @PostMapping("/write")
+    public String boardWrite(@ModelAttribute BoardDTO boardDTO) {
+
+        if (boardDTO.inputCheck())
+            throw new BoardDTOBlankException();
+
+        boardDAO.insert(boardDTO);
+
+        return "redirect:/board/list";
     }
 }

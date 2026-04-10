@@ -31,4 +31,10 @@ public class BoardDAOImpl implements BoardDAO {
     public int increaseViewCnt(Integer bno) {
         return mapper.increaseViewCnt(bno);
     }
+
+    // 게시글 작성
+    @Override
+    public int insert(BoardDTO boardDTO) {
+        return mapper.insert(boardDTO);
+    }
 }

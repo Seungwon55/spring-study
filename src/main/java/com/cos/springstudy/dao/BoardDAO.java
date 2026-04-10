@@ -14,4 +14,7 @@ public interface BoardDAO {
 
     // 조회수 증가
     int increaseViewCnt(Integer bno);
+
+    // 게시글 작성
+    int insert(BoardDTO boardDTO);
 }

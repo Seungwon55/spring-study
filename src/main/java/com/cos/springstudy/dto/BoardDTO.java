@@ -16,5 +16,10 @@ public class BoardDTO {
     private String content;
     private Integer memberId;
     private LocalDateTime regDate;
-    private int viewCnt;
+    private Integer viewCnt;
+
+    // 게시글 제목,내용 입력 확인
+    public boolean inputCheck() {
+        return title.isBlank() || content.isBlank();
+    }
 }
