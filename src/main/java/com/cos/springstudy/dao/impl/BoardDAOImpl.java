@@ -43,4 +43,10 @@ public class BoardDAOImpl implements BoardDAO {
     public int delete(Integer bno) {
         return mapper.delete(bno);
     }
+
+    // 게시글 수정
+    @Override
+    public int update(Integer bno, BoardDTO boardDTO) {
+        return mapper.update(bno, boardDTO);
+    }
 }

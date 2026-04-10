@@ -20,4 +20,7 @@ public interface BoardDAO {
 
     // 게시글 삭제
     int delete(Integer bno);
+
+    // 게시글 수정
+    int update(Integer bno, BoardDTO boardDTO);
 }

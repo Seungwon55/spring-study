@@ -34,6 +34,13 @@
         WHERE bno = #{bno}
     </delete>
 
+    <!-- 게시글 수정 -->
+    <update id="update">
+        UPDATE board
+        SET title = #{board.title}, content = #{board.content}
+        WHERE bno = #{bno}
+    </update>
+
     <!-- 중복 SELECT 문 블록 생성 -->
     <sql id="select">
         SELECT *

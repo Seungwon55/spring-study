@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성</title>
+    <title>게시글 수정</title>
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/fragment/header.css">
     <link rel="stylesheet" href="/css/fragment/footer.css">
@@ -11,20 +11,20 @@
 </head>
 <body>
 
-<!-- 헤더 -->
+<!-- 네비게이션 -->
 <div th:replace="~{fragment/header :: header}"></div>
 
 <div class="notice-write-page">
-    <h1 class="page-title">게시글 작성</h1>
+    <h1 class="page-title">게시글 수정</h1>
 
-    <form action="/board/write" method="post" class="notice-form">
+    <form th:action="@{/board/update/{bno}(bno=${board.bno})}" method="post" class="notice-form">
         <table class="write-table">
             <tbody>
             <tr>
                 <th>제목</th>
                 <td>
                     <div class="title-row">
-                        <input type="text" name="title" class="title-input" required>
+                        <input type="text" name="title" th:placeholder="${board.title}" class="title-input">
                     </div>
                 </td>
             </tr>
@@ -33,13 +33,10 @@
                 <th>본문</th>
                 <td>
                     <div class="editor-box">
-                        <textarea name="content" class="editor-textarea" required></textarea>
+                        <textarea name="content" th:placeholder="${board.content}" class="editor-textarea"></textarea>
                     </div>
                 </td>
             </tr>
-
-            <!-- 해당 회원 번호도 함께 넘기기 -->
-            <input type="hidden" name="memberId" th:value="${session.member.memberId}">
 
             </tbody>
         </table>
@@ -53,7 +50,7 @@
 
             <div class="right-buttons">
                 <button type="submit" class="btn btn-primary">등록</button>
-                <a href="/board/list" class="btn btn-outline">뒤로</a>
+                <a th:href="@{/board/read/{bno}(boardId=${board.bno})}" class="btn btn-outline">뒤로</a>
             </div>
 
         </div>

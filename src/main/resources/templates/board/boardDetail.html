@@ -43,7 +43,7 @@
     <!-- 하단 버튼 -->
     <div class="notice-bottom">
         <div class="control-wrap">
-            <button type="button" th:disabled="${board.memberId != session.member.memberId}"
+            <button type="button" th:disabled="${!#strings.equals(board.memberId, session.member.memberId)}"
                     th:onclick="|location.href='@{/board/update/{bno}(bno=${board.bno})}'|" class="list-btn">   <!-- 해당 게시물이 자기 게시물이 아닐 때 버튼 비활성화 -->
                 수정
             </button>

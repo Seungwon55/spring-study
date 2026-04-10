@@ -2,6 +2,7 @@ package com.cos.springstudy.mapper;
 
 import com.cos.springstudy.dto.BoardDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,7 @@ public interface BoardMapper {
 
     // 게시글 삭제
     int delete(Integer bno);
+
+    // 게시글 수정
+    int update(@Param("bno") Integer bno, @Param("board") BoardDTO boardDTO);
 }

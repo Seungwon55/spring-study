@@ -72,4 +72,29 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
+
+    // 게시글 수정 폼으로 이동
+    @GetMapping("/update/{bno}")
+    @LoginCheck
+    public String boardUpdateForm(@PathVariable Integer bno, Model model) {
+
+        // 이전 제목과 내용 전송
+        BoardDTO boardDTO = boardDAO.selectByBno(bno);
+        model.addAttribute("board", boardDTO);
+
+        return "board/boardUpdateForm";
+    }
+
+    // 게시글 수정
+    @PostMapping("/update/{bno}")
+    public String boardUpdate(@PathVariable Integer bno, @ModelAttribute BoardDTO boardDTO) {
+
+        if (boardDTO.inputCheck())
+            throw new BoardDTOBlankException();
+
+        boardDAO.update(bno, boardDTO);
+
+        return "redirect:/board/read/{bno}";
+    }
+
 }
