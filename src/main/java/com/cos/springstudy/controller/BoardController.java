@@ -4,8 +4,9 @@ import com.cos.springstudy.aop.LoginCheck;
 import com.cos.springstudy.dao.BoardDAO;
 import com.cos.springstudy.dto.BoardDTO;
 import com.cos.springstudy.error.exception.BoardDTOBlankException;
+import com.cos.springstudy.util.PageHandler;
+import com.cos.springstudy.util.SearchCondition;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +23,18 @@ public class BoardController {
 
     // 게시판 목록
     @GetMapping("/list")
-    public String boardList(Model model) {
+    public String boardList(@ModelAttribute SearchCondition sc, Model model) {
 
-        List<BoardDTO> boardDTOList = boardDAO.selectList();
+        // 검색어 여부와 조건에 따른 게시물 총 개수
+        int totalCnt = sc.getOption() == null ? boardDAO.selectCnt() : boardDAO.selectCntBySc(sc);
+
+        // 게시글 리스트 조회할 때는 PageHandler 필수
+        PageHandler ph = new PageHandler(sc, totalCnt);
+        List<BoardDTO> boardDTOList = boardDAO.selectListByPh(ph);
+        model.addAttribute("ph", ph);
         model.addAttribute("boardList", boardDTOList);
+
+        System.out.println("ph = " + ph);
 
         return "board/boardList";
     }

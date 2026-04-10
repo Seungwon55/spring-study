@@ -65,6 +65,20 @@
         </div>
     </form>
 
+    <!-- 페이지네이션 -->
+    <form action="/board/list" method="get" class="pagination">
+        <button type="submit" name="page" th:value="${ph.sc.page - 10}" class="page-btn" th:classappend="${ph.showPrevBlock} ? '' : 'disabled'">❮❮</button>
+        <button type="submit" name="page" th:value="${ph.sc.page - 1}" class="page-btn" th:classappend="${ph.showPrev} ? '' : 'disabled'">❮</button>
+        <th:block th:each="num : ${#numbers.sequence(ph.beginPage, ph.endPage)}">
+            <button type="submit" name="page" th:value="${num}" th:text="${num}" class="page-btn" th:classappend="${num == ph.sc.page} ? 'active' : ''">1</button>
+        </th:block>
+        <button type="submit" name="page" th:value="${ph.sc.page + 1}" class="page-btn" th:classappend="${ph.showNext} ? '' : 'disabled'">❯</button>
+        <button type="submit" name="page" th:value="${ph.sc.page + 10}" class="page-btn" th:classappend="${ph.showNextBlock} ? '' : 'disabled'">❯❯</button>
+
+        <input type="hidden" name="option" th:if="${ph.sc.option != null}" th:value="${ph.sc.option}">
+        <input type="hidden" name="keyword" th:if="${ph.sc.keyword != null}" th:value="${ph.sc.keyword}">
+    </form>
+
 </div>
 
 <!-- 푸터 -->

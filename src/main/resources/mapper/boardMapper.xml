@@ -6,7 +6,7 @@
     <!-- 게시글 리스트 조회 -->
     <select id="selectList" resultType="BoardDTO">
         <include refid="select" />
-        ORDER BY #{bno} DESC
+        ORDER BY bno DESC
     </select>
 
     <!-- 게시글 번호를 통한 게시글 조회 -->
@@ -41,9 +41,65 @@
         WHERE bno = #{bno}
     </update>
 
-    <!-- 중복 SELECT 문 블록 생성 -->
+    <!-- 게시글 개수 조회 -->
+    <select id="selectCnt" resultType="Integer">
+        <include refid="selectCnt" />
+    </select>
+
+    <!-- 검색 조건에 따른 게시글 개수 조회 -->
+    <select id="selectCntBySc" parameterType="SearchCondition" resultType="Integer">
+        <include refid="selectCnt" />
+        WHERE 1 = 1
+        <include refid="searchCondition" />
+    </select>
+
+    <!-- 페이지와 검색어에 따른 게시글 리스트 조회 -->
+    <select id="selectListByPh" parameterType="PageHandler" resultType="BoardDTO">
+        <include refid="select" />
+        WHERE 1 = 1
+        <if test="sc.option != null and sc.keyword != null">
+            <choose>
+                <when test="sc.option == 'title'">
+                    AND title LIKE CONCAT('%', #{sc.keyword}, '%')
+                </when>
+                <when test="sc.option == 'content'">
+                    AND content LIKE CONCAT('%', #{sc.keyword}, '%')
+                </when>
+                <otherwise>
+                    AND title LIKE CONCAT('%', #{sc.keyword}, '%')
+                    OR content LIKE CONCAT('%', #{sc.keyword}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        ORDER BY bno DESC
+        LIMIT #{PAGE_SIZE} OFFSET #{offset}
+    </select>
+
     <sql id="select">
         SELECT *
         FROM board
+    </sql>
+
+    <sql id="selectCnt">
+        SELECT COUNT(bno)
+        FROM board
+    </sql>
+
+    <!-- 검색 조건 블록 -->
+    <sql id="searchCondition">
+        <if test="option != null and keyword != null">
+            <choose>
+                <when test="option == 'title'">
+                    AND title LIKE CONCAT('%', #{keyword}, '%')
+                </when>
+                <when test="option == 'content'">
+                    AND content LIKE CONCAT('%', #{keyword}, '%')
+                </when>
+                <otherwise>
+                    AND title LIKE CONCAT('%', #{keyword}, '%')
+                    OR content LIKE CONCAT('%', #{keyword}, '%')
+                </otherwise>
+            </choose>
+        </if>
     </sql>
 </mapper>
