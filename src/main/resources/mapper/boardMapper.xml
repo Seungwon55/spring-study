@@ -28,6 +28,12 @@
         VALUES(#{title}, #{content}, #{memberId})
     </insert>
 
+    <!-- 게시글 삭제 -->
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM board
+        WHERE bno = #{bno}
+    </delete>
+
     <!-- 중복 SELECT 문 블록 생성 -->
     <sql id="select">
         SELECT *

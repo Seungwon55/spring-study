@@ -48,7 +48,7 @@
                 수정
             </button>
             <form th:action="@{/board/delete/{bno}(bno=${board.bno})}" method="post" style="display: inline">
-                <button type="submit" class="list-btn" th:disabled="${board.memberId != session.member.memberId}">삭제</button>   <!-- 해당 게시물이 자기 게시물이 아닐 때 버튼 비활성화 -->
+                <button type="submit" class="list-btn" th:disabled="${!#strings.equals(board.memberId, session.member.memberId)}">삭제</button>   <!-- 해당 게시물이 자기 게시물이 아닐 때 버튼 비활성화 -->
             </form>
         </div>
 

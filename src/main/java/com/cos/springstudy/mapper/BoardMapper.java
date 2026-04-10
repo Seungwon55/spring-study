@@ -19,4 +19,7 @@ public interface BoardMapper {
 
     // 게시글 작성
     int insert(BoardDTO boardDTO);
+
+    // 게시글 삭제
+    int delete(Integer bno);
 }

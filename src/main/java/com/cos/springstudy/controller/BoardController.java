@@ -4,6 +4,8 @@ import com.cos.springstudy.aop.LoginCheck;
 import com.cos.springstudy.dao.BoardDAO;
 import com.cos.springstudy.dto.BoardDTO;
 import com.cos.springstudy.error.exception.BoardDTOBlankException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,7 @@ public class BoardController {
     // 해당 게시글 조회
     @GetMapping("/read/{bno}")
     @LoginCheck
-    public String boardDetail(@PathVariable int bno, Model model) {
+    public String boardDetail(@PathVariable int bno, Model model, HttpServletRequest request) {
 
         // 해당 게시글 조회수 증가
         boardDAO.increaseViewCnt(bno);
@@ -58,6 +60,15 @@ public class BoardController {
             throw new BoardDTOBlankException();
 
         boardDAO.insert(boardDTO);
+
+        return "redirect:/board/list";
+    }
+
+    // 게시글 삭제
+    @PostMapping("/delete/{bno}")
+    public String boardDelete(@PathVariable int bno) {
+
+        boardDAO.delete(bno);
 
         return "redirect:/board/list";
     }
