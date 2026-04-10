@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 조회</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/fragment/header.css">
+    <link rel="stylesheet" href="/css/fragment/footer.css">
+    <link rel="stylesheet" href="/css/board/boardDetail.css">
+</head>
+<body>
+
+<!-- 헤더 -->
+<div th:replace="~{fragment/header :: header}"></div>
+
+<div class="notice-detail-page">
+
+    <!-- 상단 제목 -->
+    <div class="notice-header">
+        <h1>게시글</h1>
+    </div>
+
+    <!-- 상세 영역 -->
+    <div class="notice-detail">
+        <div class="notice-top-line"></div>
+
+        <div class="notice-info">
+            <h2 class="notice-title" th:text="${board.title}">게시글 제목</h2>
+
+            <div class="notice-meta">
+                <span class="writer" th:text="${board.memberId}">작성자</span>
+                <span class="date" th:text="${board.regDate}">작성일</span>
+                <span class="view">조회: <span th:text="${board.viewCnt}">1</span></span>
+            </div>
+        </div>
+
+        <div class="notice-content">
+            <p th:text="${board.content}">몰 오픈을 축하합니다.</p>
+        </div>
+    </div>
+
+    <!-- 하단 버튼 -->
+    <div class="notice-bottom">
+        <div class="control-wrap">
+            <button type="button" th:disabled="${!#strings.equals(board.memberId, session.member.memberId)}"
+                    th:onclick="|location.href='@{/board/update/{bno}(bno=${board.bno})}'|" class="list-btn">   <!-- 해당 게시물이 자기 게시물이 아닐 때 버튼 비활성화 -->
+                수정
+            </button>
+            <form th:action="@{/board/delete/{bno}(bno=${board.bno})}" method="post" style="display: inline">
+                <button type="submit" class="list-btn" th:disabled="${!#strings.equals(board.memberId, session.member.memberId)}">삭제</button>   <!-- 해당 게시물이 자기 게시물이 아닐 때 버튼 비활성화 -->
+            </form>
+        </div>
+
+        <div class="list-wrap">
+            <button type="button" class="list-btn">
+                <a href="/board/list">목록</a>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- 푸터 -->
+<div th:replace="~{fragment/footer :: footer}"></div>
+
+</body>
+</html>

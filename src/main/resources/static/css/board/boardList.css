@@ -1,0 +1,182 @@
+.notice-page {
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+}
+
+/* 제목 영역 */
+.notice-header {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.notice-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #3f3f3f;
+    margin-bottom: 28px;
+}
+
+/* 게시판 */
+.notice-board {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.notice-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.notice-table thead tr {
+}
+
+.notice-table th,
+.notice-table td {
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px 10px;
+    font-size: 12px;
+}
+
+.notice-table th {
+    font-weight: 600;
+    color: #222;
+    background-color: #efefef;
+}
+
+.notice-table td {
+    color: #444;
+    background-color: #fff;
+}
+
+.notice-table .col-no {
+    width: 70px;
+}
+
+.notice-table .col-title {
+    width: auto;
+}
+
+.notice-table .col-writer {
+    width: 160px;
+}
+
+.notice-table .col-date {
+    width: 150px;
+    line-height: 1.7;
+}
+
+.notice-table .col-view {
+    width: 70px;
+}
+
+.title-text {
+    text-align: left;
+    padding-left: 22px;
+}
+
+.title-text a {
+    text-decoration: none;
+    color: #4a5d78;
+    font-size: 12px;
+}
+
+/* 검색/글쓰기 */
+.notice-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+}
+
+.search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-wrap select,
+.search-wrap input {
+    height: 44px;
+    border: 1px solid #d8d8d8;
+    background-color: #fff;
+    font-size: 12px;
+    color: #333;
+    padding: 0 14px;
+    outline: none;
+}
+
+.search-wrap select {
+    min-width: 92px;
+    cursor: pointer;
+}
+
+.search-wrap input {
+    width: 195px;
+}
+
+.search-btn {
+    width: 74px;
+    height: 44px;
+    border: 1px solid #c9a47e;
+    background-color: #fff;
+    color: #c9a47e;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #f0ebe5;
+}
+
+.write-btn {
+    display: block;
+    padding: 20px 40px;
+    border: none;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration-line: none;
+    background-color: #caa57d;
+    cursor: pointer;
+}
+
+.write-btn:hover {
+    opacity: 0.92;
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 66px;
+}
+
+.page-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.page-btn:hover {
+    background-color: #ddd;
+}
+
+.disabled {
+    pointer-events: none;
+    color: #ddd;
+}
+
+.active {
+    color: white;
+    background-color: #caa57d;
+}
+

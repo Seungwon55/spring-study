@@ -1,0 +1,87 @@
+.notice-detail-page {
+    width: 90%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 20px 30px 80px;
+}
+
+/* 상단 제목 */
+.notice-header {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.notice-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* 상세 영역 */
+.notice-detail {
+    width: 100%;
+}
+
+.notice-top-line {
+    border-top: 2px solid #2f2f2f;
+}
+
+.notice-info {
+    padding: 34px 10px 30px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.notice-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 24px;
+}
+
+.notice-meta {
+    display: flex;
+    gap: 28px;
+    font-size: 12px;
+    color: #666;
+}
+
+.notice-meta .writer {
+    color: #111;
+}
+
+.notice-content {
+    min-height: 200px;
+    padding: 34px 20px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #222;
+}
+
+/* 하단 버튼 */
+.notice-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-btn {
+    display: inline-block;
+    width: 150px;
+    height: 56px;
+    border: 1px solid #d2a67d;
+    font-size: 12px;
+    color: #c19368;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.list-btn a {
+    color: #c19368;
+    font-size: 12px;
+    text-decoration-line: none;
+}
+
+.list-btn:hover {
+    background-color: #f1ebe5;
+}
